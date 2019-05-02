@@ -10,9 +10,9 @@
 </head>
 
 <body>
-  <p class="text-center bg-blue" id="app">
-    <example-component></example-component>
-  </p>
+  <div class="bg-black-brand min-h-screen" id="app">
+  <time-matrix></time-matrix>
+  </div>
 </body>
 
 </html>
