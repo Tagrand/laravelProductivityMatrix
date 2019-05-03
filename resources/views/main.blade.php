@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="bg-black-brand min-h-screen" id="app">
+  <div class="bg-black-brand min-h-screen p-24" id="app">
   <time-matrix></time-matrix>
   </div>
 </body>
