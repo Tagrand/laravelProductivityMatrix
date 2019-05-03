@@ -12,5 +12,9 @@
     data() {
       return {};
     },
+
+    created() {
+      console.log(this.$store.state.change);
+    },
   };
 </script>

@@ -1,12 +1,10 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-require('./bootstrap');
-
 window.Vue = require('vue');
+
+window.axios = require('axios');
+
+import { store } from './store/store';
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,4 +27,5 @@ Vue.component('time-matrix', require('./components/TimeMatrix.vue').default);
 
 const app = new Vue({
     el: '#app',
+    store,
 });
