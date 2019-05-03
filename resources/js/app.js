@@ -1,10 +1,10 @@
-window.Vue = require('vue');
+window.Vue = require("vue");
 
-window.axios = require('axios');
+window.axios = require("axios");
 
-import { store } from './store/store';
+import { store } from "./store/store";
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * The following block of code may be used to automatically register your
@@ -17,7 +17,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('time-matrix', require('./components/TimeMatrix.vue').default);
+Vue.component("time-matrix", require("./components/TimeMatrix.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -26,6 +26,6 @@ Vue.component('time-matrix', require('./components/TimeMatrix.vue').default);
  */
 
 const app = new Vue({
-    el: '#app',
-    store,
+    el: "#app",
+    store
 });

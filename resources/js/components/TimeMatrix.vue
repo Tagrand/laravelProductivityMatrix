@@ -8,13 +8,13 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {};
-    },
+export default {
+  data() {
+    return {};
+  },
 
-    created() {
-      console.log(this.$store.state.change);
-    },
-  };
+  created() {
+    console.log(this.$store.state.change);
+  }
+};
 </script>
