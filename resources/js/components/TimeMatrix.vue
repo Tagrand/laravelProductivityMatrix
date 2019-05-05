@@ -7,7 +7,14 @@
       <div class="bg-yellow-brand section"></div>
     </div>
 
-    <div v-for="job in jobs" class="absolute bg-black-brand test" :style="positionJob(job)"></div>
+    <div
+      v-for="job in jobs"
+      class="absolute test"
+      :style="positionJob(job)"
+      @mouseleave="setActiveJob({})"
+      @mouseenter="setActiveJob(job)"
+      :class="isActiveJob(job) ? 'bg-blue-light' : 'bg-black-brand'"
+    ></div>
   </div>
 </template>
 
@@ -31,14 +38,16 @@
 <script>
 export default {
   data() {
-    return {
-      activeJob: {}
-    };
+    return {};
   },
 
   computed: {
     jobs() {
       return this.$store.state.jobs;
+    },
+
+    activeJob() {
+      return this.$store.state.activeJob;
     }
   },
 
@@ -48,6 +57,14 @@ export default {
         top: `${job.y * 0.3}px`,
         left: `${job.x * 0.3}px`
       };
+    },
+
+    setActiveJob(job) {
+      this.$store.dispatch("updateActiveJob", job);
+    },
+
+    isActiveJob(job) {
+      return job.name === this.activeJob.name;
     }
   }
 };

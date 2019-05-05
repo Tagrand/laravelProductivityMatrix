@@ -1,6 +1,6 @@
 <template>
   <div class="ml-32 self-center">
-    <div v-for="job in topFiveJobs" class="mt-4 text-2xl">
+    <div class="mt-4 text-2xl" v-for="job in topFiveJobs">
       <span :class="matrixGroup(job)">{{ formatName(job.name) }}</span>
     </div>
   </div>
@@ -15,6 +15,10 @@ export default {
   computed: {
     jobs() {
       return this.$store.state.jobs;
+    },
+
+    activeJob() {
+      return this.$store.state.activeJob;
     },
 
     topFiveJobs() {
