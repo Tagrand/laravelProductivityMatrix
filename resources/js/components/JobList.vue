@@ -1,7 +1,11 @@
 <template>
   <div class="ml-32 self-center" style="width: 300px">
     <div class="mt-4 text-2xl" v-for="job in topFiveJobs">
-      <span :class="nameStyle(job)">{{ formatName(job.name) }}</span>
+      <span
+        :class="nameStyle(job)"
+        @mouseleave="setActiveJob({})"
+        @mouseenter="setActiveJob(job)"
+      >{{ formatName(job.name) }}</span>
     </div>
   </div>
 </template>
@@ -28,7 +32,7 @@ export default {
 
   methods: {
     nameStyle(job) {
-       return this.matrixGroupStyling(job) + ' ' + this.activeJobStyling(job);
+      return this.matrixGroupStyling(job) + " " + this.activeJobStyling(job);
     },
 
     matrixGroupStyling(job) {
@@ -48,7 +52,7 @@ export default {
     },
 
     activeJobStyling(job) {
-      return this.activeJob.id === job.id ? 'text-bold text-3xl' : '';
+      return this.activeJob.id === job.id ? "text-bold text-3xl" : "";
     },
 
     rankImportance(job1, job2) {
@@ -65,6 +69,14 @@ export default {
 
     formatName(name) {
       return name.charAt(0).toUpperCase() + name.slice(1);
+    },
+
+    setActiveJob(job) {
+      this.$store.dispatch("updateActiveJob", job);
+    },
+
+    isActiveJob(job) {
+      return job.id === this.activeJob.id;
     }
   }
 };
