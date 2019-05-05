@@ -18,8 +18,8 @@ export default {
     },
 
     topFiveJobs() {
-      return this.jobs.sort(this.rankImportance).slice(0,5);
-    },
+      return this.jobs.sort(this.rankImportance).slice(0, 5);
+    }
   },
 
   methods: {
@@ -40,20 +40,20 @@ export default {
     },
 
     rankImportance(job1, job2) {
-      if (job1.y + job1.x > job2.y + job2.x) {
-        return -1;
-      }
-
       if (job1.y + job1.x < job2.y + job2.x) {
         return 1;
+      }
+
+      if (job1.y + job1.x > job2.y + job2.x) {
+        return -1;
       }
 
       return 0;
     },
 
     formatName(name) {
-     return name.charAt(0).toUpperCase() + name.slice(1);
-    },
-  },
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+  }
 };
 </script>

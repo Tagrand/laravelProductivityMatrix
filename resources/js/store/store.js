@@ -10,34 +10,34 @@ export const store = new Vuex.Store({
         jobs: [
             {
                 name: "build website",
-                y: "765",
-                x: "265",
+                y: 765,
+                x: 265,
             },
             {
                 name: "build app",
-                y: "652",
-                x: "4",
+                y: 0,
+                x: 1000,
             },
             {
                 name: "clean flat",
-                y: "8",
-                x: "800",
+                y: 1000,
+                x: 0
             },
             {
                 name: "phone home",
-                y: "989",
-                x: "877",
+                y: 1000,
+                x: 1000,
             },
             {
                 name: "watch netflix",
-                y: "2",
-                x: "76",
+                y: 0,
+                x: 0,
             },
             {
                 name: "watch amazon prime",
-                y: "2",
-                x: "66",
-            },
-        ],
-    },
+                y: 2,
+                x: 66,
+            }
+        ]
+    }
 });
