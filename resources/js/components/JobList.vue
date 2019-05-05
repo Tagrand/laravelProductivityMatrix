@@ -1,7 +1,7 @@
 <template>
-  <div class="ml-32 self-center">
+  <div class="ml-32 self-center" style="width: 300px">
     <div class="mt-4 text-2xl" v-for="job in topFiveJobs">
-      <span :class="matrixGroup(job)">{{ formatName(job.name) }}</span>
+      <span :class="nameStyle(job)">{{ formatName(job.name) }}</span>
     </div>
   </div>
 </template>
@@ -27,7 +27,11 @@ export default {
   },
 
   methods: {
-    matrixGroup(job) {
+    nameStyle(job) {
+       return this.matrixGroupStyling(job) + ' ' + this.activeJobStyling(job);
+    },
+
+    matrixGroupStyling(job) {
       if (job.y > 500 && job.x > 500) {
         return "text-green-brand";
       }
@@ -41,6 +45,10 @@ export default {
       }
 
       return "text-red-brand";
+    },
+
+    activeJobStyling(job) {
+      return this.activeJob.id === job.id ? 'text-bold text-3xl' : '';
     },
 
     rankImportance(job1, job2) {

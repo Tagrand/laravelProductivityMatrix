@@ -64,7 +64,7 @@ export default {
     },
 
     isActiveJob(job) {
-      return job.name === this.activeJob.name;
+      return job.id === this.activeJob.id;
     }
   }
 };
