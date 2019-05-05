@@ -1,6 +1,5 @@
 <template>
-  <div class="ml-32">
-    <h1 class="text-white font-thin text-xl text-center">Next</h1>
+  <div class="ml-32 self-center">
     <div v-for="job in topFiveJobs" class="mt-4 text-2xl">
       <span :class="matrixGroup(job)">{{ formatName(job.name) }}</span>
     </div>
