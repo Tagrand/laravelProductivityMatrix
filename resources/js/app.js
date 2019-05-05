@@ -18,6 +18,7 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component("time-matrix", require("./components/TimeMatrix.vue").default);
+Vue.component("job-list", require("./components/JobList.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

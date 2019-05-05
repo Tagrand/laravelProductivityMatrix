@@ -11,7 +11,10 @@
 
 <body>
   <div class="bg-black-brand min-h-screen" id="app">
-  <time-matrix></time-matrix>
+    <div class="flex justify-center w-full pt-24">
+      <time-matrix></time-matrix>
+      <job-list></job-list>
+    </div>
   </div>
 </body>
 

@@ -33,6 +33,6 @@ export const store = new Vuex.Store({
                 y: "2",
                 x: "76"
             }
-        ]
-    }
+        ],
+    },
 });

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-64 w-64 flex flex-wrap">
+  <div class="h-64 w-64 flex flex-wrap mr-32">
     <div class="bg-teal-brand h-32 w-32"></div>
     <div class="bg-green-brand h-32 w-32"></div>
     <div class="bg-red-brand h-32 w-32"></div>
