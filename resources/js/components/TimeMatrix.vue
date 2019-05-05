@@ -1,6 +1,6 @@
 <template>
-  <div class="relative">
-    <div class="flex main flex-wrap mr-32">
+  <div class="relative mr-48">
+    <div class="flex main flex-wrap">
       <div class="bg-teal-brand section"></div>
       <div class="bg-green-brand section"></div>
       <div class="bg-red-brand section"></div>

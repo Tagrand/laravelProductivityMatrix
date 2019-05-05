@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-32 self-center" style="width: 300px">
+  <div class="ml-48 self-center" style="width: 500px">
     <div class="mt-4 text-2xl" v-for="job in topFiveJobs">
       <span
         :class="nameStyle(job)"
@@ -14,6 +14,10 @@
 export default {
   data() {
     return {};
+  },
+
+  created() {
+    this.$store.dispatch("getJobs");
   },
 
   computed: {
