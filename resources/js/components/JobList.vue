@@ -1,8 +1,8 @@
 <template>
   <div class="ml-32">
     <h1 class="text-white font-thin text-xl text-center">Next</h1>
-    <div v-for="job in orderedJobs" class="mt-4 text-2xl">
-      <span :class="matrixGroup(job)">{{ job.name }}</span>
+    <div v-for="job in topFiveJobs" class="mt-4 text-2xl">
+      <span :class="matrixGroup(job)">{{ formatName(job.name) }}</span>
     </div>
   </div>
 </template>
@@ -18,9 +18,9 @@ export default {
       return this.$store.state.jobs;
     },
 
-    orderedJobs() {
-      return this.jobs.sort(this.rankImportance);
-    }
+    topFiveJobs() {
+      return this.jobs.sort(this.rankImportance).slice(0,5);
+    },
   },
 
   methods: {
@@ -50,7 +50,11 @@ export default {
       }
 
       return 0;
-    }
-  }
+    },
+
+    formatName(name) {
+     return name.charAt(0).toUpperCase() + name.slice(1);
+    },
+  },
 };
 </script>

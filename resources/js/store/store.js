@@ -11,28 +11,33 @@ export const store = new Vuex.Store({
             {
                 name: "build website",
                 y: "765",
-                x: "265"
+                x: "265",
             },
             {
                 name: "build app",
                 y: "652",
-                x: "4"
+                x: "4",
             },
             {
                 name: "clean flat",
                 y: "8",
-                x: "800"
+                x: "800",
             },
             {
                 name: "phone home",
                 y: "989",
-                x: "877"
+                x: "877",
             },
             {
                 name: "watch netflix",
                 y: "2",
-                x: "76"
-            }
+                x: "76",
+            },
+            {
+                name: "watch amazon prime",
+                y: "2",
+                x: "66",
+            },
         ],
     },
 });
