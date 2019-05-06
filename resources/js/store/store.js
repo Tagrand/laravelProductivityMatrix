@@ -29,7 +29,7 @@ export const store = new Vuex.Store({
         getJobs({ commit }) {
             axios
                 .get("http://localhost:8000/api/jobs")
-                .then(({ data }) => commit('setJobs', data));
+                .then(({ data }) => commit('setJobs', data.data));
         }
     }
 });
