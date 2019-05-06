@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(JobsSeeder::class);
+        if (app()->environment() !== 'production') {
+            $this->call(JobsSeeder::class);
+        }
     }
 }
