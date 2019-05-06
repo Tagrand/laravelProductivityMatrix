@@ -40,15 +40,15 @@ export default {
     },
 
     matrixGroupStyling(job) {
-      if (job.y > 500 && job.x > 500) {
+      if (job.importance > 500 && job.urgency > 500) {
         return "text-green-brand";
       }
 
-      if (job.y > 500) {
+      if (job.importance > 500) {
         return "text-teal-brand";
       }
 
-      if (job.x > 500) {
+      if (job.urgency > 500) {
         return "text-yellow-brand";
       }
 
@@ -60,11 +60,11 @@ export default {
     },
 
     rankImportance(job1, job2) {
-      if (job1.y + job1.x < job2.y + job2.x) {
+      if (job1.importance + job1.urgency < job2.importance + job2.urgency) {
         return 1;
       }
 
-      if (job1.y + job1.x > job2.y + job2.x) {
+      if (job1.importance + job1.urgency > job2.importance + job2.urgency) {
         return -1;
       }
 

@@ -54,8 +54,8 @@ export default {
   methods: {
     positionJob(job) {
       return {
-        top: `${300 - job.y * 0.3}px`,
-        left: `${job.x * 0.3}px`
+        top: `${300 - job.importance * 0.3}px`,
+        left: `${job.urgency * 0.3}px`
       };
     },
 
