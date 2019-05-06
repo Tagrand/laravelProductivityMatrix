@@ -13,6 +13,12 @@ use App\Http\Resources\JobCollection;
 | is assigned the "api" middleware group. Enjoy building your API! |
 */
 
+Route::post('/login', 'API\AuthController@login');
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/logout', 'API\AuthController@logout');
+});
+
 Route::get(
     '/jobs',
     function () {
