@@ -4,7 +4,7 @@ use App\Job;
 use App\User;
 use Illuminate\Database\Seeder;
 
-class TestJobs extends Seeder
+class JobsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,8 @@ class TestJobs extends Seeder
     public function run()
     {
         $user1 = factory(User::class)->create([
-            'name'  => 'Clement Attlee',
-            'email' => env('TEST_EMAIL_ONE'),
-        ]);
+        'name'  => 'Clement Attlee',
+        'email' => env('TEST_EMAIL_ONE'),]);
 
         factory(Job::class, 10)->create([
             'user_id' => $user1->id,
