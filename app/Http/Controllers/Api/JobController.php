@@ -13,13 +13,4 @@ class JobController extends Controller
     {
         return new JobCollection(User::first()->jobs);
     }
-
-    public function edit(Job $job)
-    {
-        $job->update([
-            'name' => request('name'),
-        ]);
-
-        return response('', 202);
-    }
 }
