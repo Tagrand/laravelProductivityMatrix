@@ -12,9 +12,7 @@
 <body>
   <div class="bg-black-brand min-h-screen" id="app">
     <div class="flex justify-between w-full pt-24">
-        <login></login>
-        <job-list></job-list>
-        <time-matrix></time-matrix>
+      <router-view></router-view>
     </div>
   </div>
 </body>
