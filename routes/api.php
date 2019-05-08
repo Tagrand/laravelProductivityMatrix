@@ -19,7 +19,6 @@ Route::middleware('auth:api')->group(function () {
 });
 
 Route::get('/jobs', 'Api\JobController@index')->middleware('auth:api');
-Route::get('/jobs/{job}', 'Api\JobController@edit');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
