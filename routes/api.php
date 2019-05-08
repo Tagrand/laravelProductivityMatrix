@@ -12,7 +12,7 @@ use App\Http\Resources\JobCollection;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API! |
 */
-Route::post('/login', 'Api\AuthController@login');
+Route::post('/login', ['as' => 'login', 'uses' => 'Api\AuthController@login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', 'Api\AuthController@logout');

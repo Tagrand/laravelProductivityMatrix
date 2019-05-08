@@ -9,6 +9,8 @@ export const store = new Vuex.Store({
         activeJob: {},
 
         jobs: [],
+
+        token: "",
     },
 
     mutations: {
@@ -18,7 +20,11 @@ export const store = new Vuex.Store({
 
         setJobs(state, jobs) {
             state.jobs = jobs;
-        }
+        },
+
+        setToken(state, token) {
+            state.token = token;
+        },
     },
 
     actions: {
@@ -26,10 +32,21 @@ export const store = new Vuex.Store({
             commit("setActiveJob", job);
         },
 
-        getJobs({ commit }) {
+        getJobs({ commit, state }) {
             axios
-                .get("http://localhost:8000/api/jobs")
-                .then(({ data }) => commit('setJobs', data.data));
+                .get("http://localhost:8000/api/jobs", {
+                    authorisation: `bearer ${state.token}`
+                })
+                .then(({ data }) => commit("setJobs", data.data));
+        },
+
+        login({ commit }, details) {
+            axios
+                .post("http://localhost:8000/api/login", {
+                    email: details.email,
+                    password: details.password
+                })
+                .then(({ data }) => commit("setToken", data.access_token));
         }
     }
 });
