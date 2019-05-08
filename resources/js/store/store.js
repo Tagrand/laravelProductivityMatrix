@@ -35,13 +35,13 @@ export const store = new Vuex.Store({
         getJobs({ commit, state }) {
             axios
                 .get("http://localhost:8000/api/jobs", {
-                    authorisation: `bearer ${state.token}`
+                    Authorisation: `Bearer ${state.token}`
                 })
                 .then(({ data }) => commit("setJobs", data.data));
         },
 
         login({ commit }, details) {
-            axios
+            return axios
                 .post("http://localhost:8000/api/login", {
                     email: details.email,
                     password: details.password

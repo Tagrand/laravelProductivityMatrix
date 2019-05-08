@@ -1,4 +1,4 @@
-import store from "./store/store.js";
+import { store } from "./store/store.js";
 import Login from "./components/Login.vue";
 import JobsView from "./components/JobsView.vue";
 
@@ -9,8 +9,8 @@ export default {
         {
             path: "/",
             component: JobsView,
-            beforeEnter: () => {
-                if (store.token == "") {
+            beforeEnter: (to, from, next) => {
+                if (store.state.token === "") {
                     return next("/login");
                 }
 
