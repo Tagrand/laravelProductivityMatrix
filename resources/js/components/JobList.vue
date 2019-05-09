@@ -1,5 +1,6 @@
 <template>
   <div class="ml-48 self-center" style="width: 500px">
+    <addJob v-if="showAddJob"></addJob>
     <div class="mt-4 text-2xl" v-for="job in topFiveJobs">
       <span
         :class="nameStyle(job)"
@@ -7,13 +8,23 @@
         @mouseenter="setActiveJob(job)"
       >{{ formatName(job.name) }}</span>
     </div>
+    <div class="text-white mt-4 cursor-pointer text-2xl" @click="addJob()">+</div>
   </div>
 </template>
 
 <script>
+import AddJob from './AddJob.vue';
+
 export default {
+
+ components: {
+   AddJob,
+ },
+
   data() {
-    return {};
+    return {
+      showAddJob = true,
+    };
   },
 
   created() {
@@ -81,6 +92,10 @@ export default {
 
     isActiveJob(job) {
       return job.id === this.activeJob.id;
+    },
+
+    addJob() {
+       return this.showAddJob = true;
     }
   }
 };
