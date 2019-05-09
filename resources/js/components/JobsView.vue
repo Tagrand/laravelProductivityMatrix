@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex justify-between w-full">
     <job-list></job-list>
     <time-matrix></time-matrix>
   </div>

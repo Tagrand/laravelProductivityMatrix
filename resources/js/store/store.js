@@ -34,10 +34,14 @@ export const store = new Vuex.Store({
 
         getJobs({ commit, state }) {
             axios
-                .get("http://localhost:8000/api/jobs", {
-                    Authorisation: `Bearer ${state.token}`
-                })
-                .then(({ data }) => commit("setJobs", data.data));
+                .get("http://localhost:8000/api/jobs",
+                  {
+                      headers: {
+                        Authorization: `Bearer ${state.token}`
+                      }
+                  })
+                .then(({ data }) => commit("setJobs", data.data))
+              .catch((error) => console.log(error));
         },
 
         login({ commit }, details) {

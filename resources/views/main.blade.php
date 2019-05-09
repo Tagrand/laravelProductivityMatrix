@@ -11,7 +11,7 @@
 
 <body>
   <div class="bg-black-brand min-h-screen" id="app">
-    <div class="flex justify-between w-full pt-24">
+    <div class="pt-24">
       <router-view></router-view>
     </div>
   </div>
