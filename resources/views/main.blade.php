@@ -10,8 +10,10 @@
 </head>
 
 <body>
-  <div class="bg-black-brand min-h-screen p-24" id="app">
-  <time-matrix></time-matrix>
+  <div class="bg-black-brand min-h-screen" id="app">
+    <div class="flex justify-between w-full pt-24">
+      <router-view></router-view>
+    </div>
   </div>
 </body>
 
