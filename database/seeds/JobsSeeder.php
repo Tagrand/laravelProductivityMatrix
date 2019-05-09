@@ -16,7 +16,7 @@ class JobsSeeder extends Seeder
         $user1 = factory(User::class)->create([
             'name'  => 'Clement Attlee',
             'email' => env('TEST_EMAIL_ONE'),
-            'password' => env('TEST_PASSWORD'),
+            'password' => bcrypt(env('TEST_PASSWORD')),
         ]);
 
         factory(Job::class, 10)->create([
@@ -26,7 +26,7 @@ class JobsSeeder extends Seeder
         $user2 = factory(User::class)->create([
             'name'  => 'Alexandrio Occasio-Cortez',
             'email' => env('TEST_EMAIL_TWO'),
-            'password' => env('TEST_PASSWORD'),
+            'password' => bcrypt(env('TEST_PASSWORD')),
         ]);
 
         factory(Job::class, 10)->create([
