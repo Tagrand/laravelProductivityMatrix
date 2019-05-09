@@ -1,8 +1,10 @@
 <template>
   <div>
-    <input placeholder="email" v-model="email">
-    <input placeholder="password" v-model="password">
-    <a @click.prevent="login()">login</a>
+    <form @click.prevent="login()">
+      <input placeholder="email" v-model="email">
+      <input placeholder="password" v-model="password">
+      <input type="submit" value="login">
+    </form>
   </div>
 </template>
 
@@ -17,10 +19,12 @@ export default {
 
   methods: {
     login() {
-      this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password
-      }).then(() => this.$router.push('/'));
+      this.$store
+        .dispatch("login", {
+          email: this.email,
+          password: this.password
+        })
+        .then(() => this.$router.push("/"));
     }
   }
 };
