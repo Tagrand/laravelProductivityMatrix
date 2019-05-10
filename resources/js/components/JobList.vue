@@ -28,8 +28,8 @@
     },
 
     computed: {
-      jobs() {
-        return this.$store.state.jobs;
+      activeJobs() {
+        return this.$store.getters["activeJobs"];
       },
 
       activeJob() {
@@ -37,7 +37,7 @@
       },
 
       topFiveJobs() {
-        return this.jobs.sort(this.rankImportance).slice(0, 5);
+        return this.activeJobs.sort(this.rankImportance).slice(0, 5);
       },
 
       showAddJob() {

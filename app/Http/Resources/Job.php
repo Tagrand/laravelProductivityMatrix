@@ -17,9 +17,9 @@ class Job extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'importance' => $this->importance, 
+            'importance' => $this->importance,
             'urgency' => $this->urgency,
-            'is_completed' => $this->is_completed,
+            'is_complete' => $this->is_complete,
             'is_skipped' => $this->is_skipped,
             'deadline' => $this->deadline,
             'created_at' => $this->created_at,

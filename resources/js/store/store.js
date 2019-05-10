@@ -14,6 +14,15 @@ export const store = new Vuex.Store({
     token: "",
   },
 
+  getters: {
+    activeJobs(state) {
+      return state.jobs.filter((job) => {
+        console.log(job);
+        return !job.is_complete;
+      });
+    }
+  },
+
   mutations: {
     setActiveJob(state, job) {
       state.activeJob = job;
