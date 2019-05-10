@@ -1,37 +1,39 @@
 <template>
-  <!-- template for the modal component -->
-  <transition name="modal">
-    <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
-
-          <div class="modal-header">
-            <slot name="header">
-              default header
-            </slot>
-          </div>
-
-          <div class="modal-body">
-            <slot name="body">
-              default body
-            </slot>
-          </div>
-
-          <div class="modal-footer">
-            <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
-              </button>
-            </slot>
-          </div>
-        </div>
-      </div>
-    </div>
-  </transition>
+  <form @submit.prevent="createJob()" class="flex flex-col">
+    <input type="text" placeholder="name" v-model="name"/>
+    <input type="number" v-model="importance"/>
+    <input type="number" v-model="urgency"/>
+    <input type="text" placeholder="description (optional)" v-model="description"/>
+    <input type="submit" value="addJob"/>
+    <button @click.prevent="close()" class="bg-white">Close</button>
+  </form>
 </template>
-  
+
 <script>
-export default {};
+  export default {
+    data() {
+      return {
+        name: '',
+        importance: 0,
+        urgency: 0,
+        description: '',
+      }
+    },
+
+    methods: {
+      createJob() {
+        this.$store.dispatch("createJob", {
+          name: this.name,
+          importance: this.importance,
+          urgency: this.urgency,
+          description: this.description,
+        });
+      },
+
+      close() {
+        this.$store.dispatch("hideAddJob");
+      }
+    }
+  };
 </script>
-  
+
