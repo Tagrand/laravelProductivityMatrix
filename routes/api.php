@@ -19,6 +19,7 @@ Route::middleware('auth:api')->group(function () {
 });
 
 Route::get('/jobs', 'Api\JobController@index')->middleware('auth:api');
+Route::post('/jobs', 'Api\JobController@create')->middleware('auth:api');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
