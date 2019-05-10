@@ -2,9 +2,11 @@ window.Vue = require("vue");
 
 window.axios = require("axios");
 
+import VueTippy from 'vue-tippy'
+
 import VueRouter from 'vue-router';
 
-import routes from './routes'; 
+import routes from './routes';
 
 import { store } from "./store/store";
 
@@ -22,6 +24,7 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.use(VueRouter);
+Vue.use(VueTippy)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
