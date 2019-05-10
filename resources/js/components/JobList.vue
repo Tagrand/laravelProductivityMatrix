@@ -1,26 +1,32 @@
 <template>
   <div class="ml-48 self-center" style="width: 500px">
     <addJob v-if="showAddJob"></addJob>
-    <div class="mt-4"  v-for="job in topFiveJobs" v-else>
-      <p
-        @mouseleave="setActiveJob({})"
-        @mouseenter="setActiveJob(job)"
-      >
-        <span class="text-2xl"  :class="nameStyle(job)">{{ formatName(job.name) }}</span>
-        <span @click="completeJob(job)" class="text-grey-lighter">complete</span>
-      </p>
+    <editJob v-else-if="showEditJob"></editJob>
+    <div v-else>
+      <div class="mt-4" v-for="job in topFiveJobs">
+        <p
+          @mouseleave="setActiveJob({})"
+          @mouseenter="setActiveJob(job)"
+        >
+          <span class="text-2xl" :class="nameStyle(job)">{{ formatName(job.name) }}</span>
+          <span @click="completeJob(job)" class="text-grey-lighter">complete</span>
+          <span @click="editJob" class="text-grey-lighter">edit</span>
+        </p>
+      </div>
+      <div class="text-white mt-4 cursor-pointer text-2xl" @click="addJob()">+</div>
     </div>
-    <div class="text-white mt-4 cursor-pointer text-2xl" @click="addJob()">+</div>
   </div>
 </template>
 
 <script>
   import AddJob from './AddJob.vue';
+  import EditJob from './EditJob.vue';
 
   export default {
 
     components: {
       AddJob,
+      EditJob,
     },
 
     created() {
@@ -42,6 +48,10 @@
 
       showAddJob() {
         return this.$store.state.showAddJob;
+      },
+
+      showEditJob() {
+        return this.$store.state.showEditJob;
       }
     },
 
@@ -98,8 +108,13 @@
         return this.$store.dispatch("showAddJob");
       },
 
-      completeJob(job){
+      completeJob(job) {
         return this.$store.dispatch("completeJob", job);
+      },
+
+      editJob(job) {
+        this.setActiveJob(job);
+        return this.$store.dispatch("showEditJob");
       }
     }
   };

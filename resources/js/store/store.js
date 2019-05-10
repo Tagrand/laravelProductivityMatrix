@@ -7,6 +7,8 @@ export const store = new Vuex.Store({
   state: {
     showAddJob: false,
 
+    showEditJob: false,
+
     activeJob: {},
 
     jobs: [],
@@ -17,7 +19,6 @@ export const store = new Vuex.Store({
   getters: {
     activeJobs(state) {
       return state.jobs.filter((job) => {
-        console.log(job);
         return !job.is_complete;
       });
     }
@@ -40,9 +41,9 @@ export const store = new Vuex.Store({
       state.showAddJob = status;
     },
 
-    addJob(state, job) {
-      state.jobs.push(job);
-    }
+    setEditJob(state, status) {
+      state.showEditJob = status;
+    },
   },
 
   actions: {
@@ -72,11 +73,19 @@ export const store = new Vuex.Store({
     },
 
     showAddJob({ commit }) {
-      commit("setAddJob", true)
+      commit("setAddJob", true);
     },
 
     hideAddJob({ commit }) {
-      commit("setAddJob", false)
+      commit("setAddJob", false);
+    },
+
+    showEditJob({ commit }) {
+      commit("setEditJob", true);
+    },
+
+    hideEditJob({ commit }) {
+      commit("setEditJob", false);
     },
 
     createJob({ commit, state }, job) {
