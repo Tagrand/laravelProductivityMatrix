@@ -23,7 +23,7 @@ export default {
 
   data() {
     return {
-      showAddJob = true,
+      showAddJob: true,
     };
   },
 
