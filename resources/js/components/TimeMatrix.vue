@@ -10,8 +10,8 @@
     <div
       v-tippy
       :title="job.name"
-      v-for="job in jobs"
       class="absolute test"
+      v-for="job in activeJobs"
       :style="positionJob(job)"
       @mouseleave="setActiveJob({})"
       @mouseenter="setActiveJob(job)"
@@ -21,53 +21,52 @@
 </template>
 
 <style scoped>
-.test {
-  width: 10px;
-  height: 10px;
-}
+  .test {
+    width: 10px;
+    height: 10px;
+  }
 
-.main {
-  width: 310px;
-  height: 310px;
-}
+  .main {
+    width: 310px;
+    height: 310px;
+  }
 
-.section {
-  width: 155px;
-  height: 155px;
-}
+  .section {
+    width: 155px;
+    height: 155px;
+  }
 </style>
 
 <script>
-export default {
-  data() {
-    return {};
-  },
-
-  computed: {
-    jobs() {
-      return this.$store.state.jobs;
+  export default {
+    data() {
+      return {};
     },
 
-    activeJob() {
-      return this.$store.state.activeJob;
+    computed: {
+      activeJobs() {
+        return this.$store.getters["activeJobs"];
+      },
+      activeJob() {
+        return this.$store.state.activeJob;
+      }
+    },
+
+    methods: {
+      positionJob(job) {
+        return {
+          top: `${300 - job.importance * 0.3}px`,
+          left: `${job.urgency * 0.3}px`
+        };
+      },
+
+      setActiveJob(job) {
+        this.$store.dispatch("updateActiveJob", job);
+      },
+
+      isActiveJob(job) {
+        return job.id === this.activeJob.id;
+      }
     }
-  },
-
-  methods: {
-    positionJob(job) {
-      return {
-        top: `${300 - job.importance * 0.3}px`,
-        left: `${job.urgency * 0.3}px`
-      };
-    },
-
-    setActiveJob(job) {
-      this.$store.dispatch("updateActiveJob", job);
-    },
-
-    isActiveJob(job) {
-      return job.id === this.activeJob.id;
-    }
-  }
-};
+  };
 </script>
