@@ -81,6 +81,19 @@ export const store = new Vuex.Store({
           })
         .then(({ data }) => commit("addJob", data.data))
         .catch((error) => console.log(error));
+    },
+
+    completeJob({dispatch, state}, job) {
+      return axios
+        .post(`http://localhost:8000/api/completed-jobs/${job.id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${state.token}`
+            }
+          })
+        .then(() => dispatch("getJobs"))
+        .catch((error) => console.log(error));
     }
   }
 });

@@ -1,12 +1,14 @@
 <template>
   <div class="ml-48 self-center" style="width: 500px">
     <addJob v-if="showAddJob"></addJob>
-    <div class="mt-4 text-2xl" v-for="job in topFiveJobs" v-else>
-      <span
-        :class="nameStyle(job)"
+    <div class="mt-4"  v-for="job in topFiveJobs" v-else>
+      <p
         @mouseleave="setActiveJob({})"
         @mouseenter="setActiveJob(job)"
-      >{{ formatName(job.name) }}</span>
+      >
+        <span class="text-2xl"  :class="nameStyle(job)">{{ formatName(job.name) }}</span>
+        <span @click="completeJob(job)" class="text-grey-lighter">complete</span>
+      </p>
     </div>
     <div class="text-white mt-4 cursor-pointer text-2xl" @click="addJob()">+</div>
   </div>
@@ -94,6 +96,10 @@
 
       addJob() {
         return this.$store.dispatch("showAddJob");
+      },
+
+      completeJob(job){
+        return this.$store.dispatch("completeJob", job);
       }
     }
   };
