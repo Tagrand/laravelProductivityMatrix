@@ -8,6 +8,8 @@
     </div>
 
     <div
+      v-tippy
+      :title="job.name"
       v-for="job in jobs"
       class="absolute test"
       :style="positionJob(job)"
