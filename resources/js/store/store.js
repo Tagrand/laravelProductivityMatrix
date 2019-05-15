@@ -112,6 +112,19 @@ export const store = new Vuex.Store({
           })
         .then(() => dispatch("getJobs"))
         .catch((error) => console.log(error));
+    },
+
+    skipJob({dispatch, state}, job) {
+      return axios
+        .post(`http://localhost:8000/api/skipped-jobs/${job.id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${state.token}`
+            }
+          })
+        .then(() => dispatch("getJobs"))
+        .catch((error) => console.log(error));
     }
   }
 });

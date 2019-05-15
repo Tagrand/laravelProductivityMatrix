@@ -23,6 +23,8 @@ Route::post('/jobs', 'Api\JobController@create')->middleware('auth:api');
 
 Route::post('/completed-jobs/{job}', 'Api\CompletedJobsController@create')->middleware('auth:api');
 
+Route::post('/skipped-jobs/{job}', 'Api\SkippedJobsController@create')->middleware('auth:api');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

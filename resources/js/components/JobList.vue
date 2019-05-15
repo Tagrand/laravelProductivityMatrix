@@ -10,6 +10,7 @@
         >
           <span class="text-2xl" :class="nameStyle(job)">{{ formatName(job.name) }}</span>
           <span @click="completeJob(job)" class="text-grey-lighter">complete</span>
+          <span @click="skipJob(job)" class="text-grey-lighter">skip</span>
           <span @click="editJob" class="text-grey-lighter">edit</span>
         </p>
       </div>
@@ -110,6 +111,10 @@
 
       completeJob(job) {
         return this.$store.dispatch("completeJob", job);
+      },
+
+      skipJob(job) {
+        return this.$store.dispatch("skipJob", job);
       },
 
       editJob(job) {
