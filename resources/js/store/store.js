@@ -44,6 +44,10 @@ export const store = new Vuex.Store({
     setEditJob(state, status) {
       state.showEditJob = status;
     },
+
+    addJob(state, job) {
+      state.jobs.push(job);
+    }
   },
 
   actions: {
@@ -101,7 +105,7 @@ export const store = new Vuex.Store({
         .catch((error) => console.log(error));
     },
 
-    completeJob({dispatch, state}, job) {
+    completeJob({ dispatch, state }, job) {
       return axios
         .post(`http://localhost:8000/api/completed-jobs/${job.id}`,
           {},
@@ -114,7 +118,7 @@ export const store = new Vuex.Store({
         .catch((error) => console.log(error));
     },
 
-    skipJob({dispatch, state}, job) {
+    skipJob({ dispatch, state }, job) {
       return axios
         .post(`http://localhost:8000/api/skipped-jobs/${job.id}`,
           {},
