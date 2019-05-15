@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
   getters: {
     activeJobs(state) {
       return state.jobs.filter((job) => {
-        return !job.is_complete;
+        return !job.is_complete && !job.is_skipped;
       });
     }
   },
