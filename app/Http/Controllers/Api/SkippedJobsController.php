@@ -10,7 +10,6 @@ use App\Http\Resources\Job as JobResource;
 
 class SkippedJobsController extends Controller
 {
-
     public function create(Job $job)
     {
         $job->update(['is_skipped' => true]);
