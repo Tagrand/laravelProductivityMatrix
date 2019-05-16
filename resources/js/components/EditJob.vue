@@ -4,7 +4,7 @@
       <input v-model="job.name" type="text"/>
       <input v-model="job.importance" type="number"/>
       <input v-model="job.urgency" type="number"/>
-      <input v-model="job.description" type="number"/>
+      <input v-model="job.description" type="text" placeholder="description"/>
       <input type="submit" value="save"/>
     </form>
     <button @click="close()" class="bg-white">Close</button>
