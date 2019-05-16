@@ -11,6 +11,8 @@ export const store = new Vuex.Store({
 
     activeJob: {},
 
+    newJob: {},
+
     jobs: [],
 
     token: "",
@@ -47,6 +49,10 @@ export const store = new Vuex.Store({
 
     addJob(state, job) {
       state.jobs.push(job);
+    },
+
+    setNewJobData(state, job) {
+      state.newJob = job;
     }
   },
 
@@ -76,12 +82,14 @@ export const store = new Vuex.Store({
         .then(({ data }) => commit("setToken", data.access_token));
     },
 
-    showAddJob({ commit }) {
+    showAddJob({ commit }, job={}) {
       commit("setAddJob", true);
+      commit("setNewJobData", job);
     },
 
     hideAddJob({ commit }) {
       commit("setAddJob", false);
+      commit("setNewJobData", {});
     },
 
     showEditJob({ commit }) {

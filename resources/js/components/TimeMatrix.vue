@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mr-48">
+  <div class="relative mr-48" @click="addJob" id="time-matrix">
     <div class="flex main flex-wrap">
       <div class="bg-teal-brand section"></div>
       <div class="bg-green-brand section"></div>
@@ -9,6 +9,7 @@
 
     <div
       v-tippy
+      @click.stop
       :title="job.name"
       class="absolute test"
       v-for="job in activeJobs"
@@ -66,6 +67,15 @@
 
       isActiveJob(job) {
         return job.id === this.activeJob.id;
+      },
+
+      addJob(event){
+        const matrixPosition = document.getElementById('time-matrix').getBoundingClientRect();
+
+        const urgency = Math.round((event.pageX - matrixPosition.x) / 0.3);
+        const importance = Math.round((300 - (event.pageY - matrixPosition.y)) / 0.3);
+
+        this.$store.dispatch("showAddJob", {importance: importance < 0 ? 0 : importance, urgency: urgency > 1000 ? 1000 : urgency});
       }
     }
   };
