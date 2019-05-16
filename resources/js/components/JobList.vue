@@ -11,7 +11,7 @@
           <span class="text-2xl" :class="nameStyle(job)">{{ formatName(job.name) }}</span>
           <span @click="completeJob(job)" class="text-grey-lighter">complete</span>
           <span @click="skipJob(job)" class="text-grey-lighter">skip</span>
-          <span @click="editJob" class="text-grey-lighter">edit</span>
+          <span @click="editJob(job)" class="text-grey-lighter">edit</span>
         </p>
       </div>
       <div class="text-white mt-4 cursor-pointer text-2xl" @click="addJob()">+</div>

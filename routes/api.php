@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Resources\JobCollection;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +19,7 @@ Route::middleware('auth:api')->group(function () {
 
 Route::get('/jobs', 'Api\JobController@index')->middleware('auth:api');
 Route::post('/jobs', 'Api\JobController@create')->middleware('auth:api');
+Route::patch('/jobs/{job}', 'Api\JobController@update')->middleware('auth:api');
 
 Route::post('/completed-jobs/{job}', 'Api\CompletedJobsController@create')->middleware('auth:api');
 

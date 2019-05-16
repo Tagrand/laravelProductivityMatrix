@@ -129,6 +129,19 @@ export const store = new Vuex.Store({
           })
         .then(() => dispatch("getJobs"))
         .catch((error) => console.log(error));
+    },
+
+    updateJob({dispatch, state}, job) {
+      return axios
+        .patch(`http://localhost:8000/api/jobs/${this.state.activeJob.id}`,
+          job,
+          {
+            headers: {
+              Authorization: `Bearer ${state.token}`
+            }
+          })
+        .then(() => dispatch("getJobs"))
+        .catch((error) => console.log(error));
     }
   }
 });

@@ -24,4 +24,11 @@ class JobController extends Controller
             'user_id' => auth()->user()->id,
         ]));
     }
+
+    public function update(Job $job)
+    {
+        $job->update(request(['name', 'importance', 'urgency', 'description']));
+
+        return new JobResource($job);
+    }
 }
