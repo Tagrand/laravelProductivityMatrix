@@ -82,22 +82,26 @@ export const store = new Vuex.Store({
         .then(({ data }) => commit("setToken", data.access_token));
     },
 
-    showAddJob({ commit }, job={}) {
-      commit("setAddJob", true);
+    setNewJob({commit}, job={}) {
       commit("setNewJobData", job);
     },
 
-    hideAddJob({ commit }) {
+    showAddJob({ commit })  {
+      commit("setAddJob", true);
+    },
+
+    hideAddJob({ commit, dispatch }) {
       commit("setAddJob", false);
-      commit("setNewJobData", {});
+      dispatch("setNewJob");
     },
 
     showEditJob({ commit }) {
       commit("setEditJob", true);
     },
 
-    hideEditJob({ commit }) {
+    hideEditJob({ commit, dispatch }) {
       commit("setEditJob", false);
+      dispatch("setNewJob");
     },
 
     createJob({ commit, state }, job) {

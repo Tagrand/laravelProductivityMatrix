@@ -69,13 +69,20 @@
         return job.id === this.activeJob.id;
       },
 
-      addJob(event){
+      addJob(event) {
         const matrixPosition = document.getElementById('time-matrix').getBoundingClientRect();
 
         const urgency = Math.round((event.pageX - matrixPosition.x) / 0.3);
         const importance = Math.round((300 - (event.pageY - matrixPosition.y)) / 0.3);
 
-        this.$store.dispatch("showAddJob", {importance: importance < 0 ? 0 : importance, urgency: urgency > 1000 ? 1000 : urgency});
+        this.$store.dispatch("setNewJob", {
+          importance: importance < 0 ? 0 : importance,
+          urgency: urgency > 1000 ? 1000 : urgency
+        });
+
+        if (!this.$store.state.showEditJob) {
+          this.$store.dispatch("showAddJob");
+        }
       }
     }
   };
